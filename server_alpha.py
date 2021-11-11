@@ -33,7 +33,7 @@ class AlphaBot(object):
         self.PWMB.start(self.PB)
         self.stop()
 
-    def forward(self, time_ms):  #that function move the alphabot forward for {time_ms} milliseconds
+    def forward(self, time_ms):  #that function moves the alphabot forward for {time_ms} milliseconds
         print("The Alphabot moves forward...")
         
 
@@ -48,10 +48,10 @@ class AlphaBot(object):
         self.stop()
 
 
-    def backward(self, time_ms):        #this funtion move the alphabot backward for {time_ms} milliseconds
+    def backward(self, time_ms):        #this funtion moves the alphabot backward for {time_ms} milliseconds
         print("The Alphabot moves backward...")
 
-        self.PWMA.ChangeDutyCycle(self.PA)      #setting the engines
+        self.PWMA.ChangeDutyCycle(self.PA)      #setting engines
         self.PWMB.ChangeDutyCycle(self.PB)
         GPIO.output(self.IN1, GPIO.HIGH)
         GPIO.output(self.IN2, GPIO.LOW)
@@ -61,7 +61,7 @@ class AlphaBot(object):
         T.sleep(time_ms/1000)
         self.stop()
 
-    def left(self, time_ms):        #this function turn the alphabot left for {time_ms} milliseconds
+    def left(self, time_ms):        #this function turns left the alphabot for {time_ms} milliseconds
         print("The Alphabot moves left...")
         
         self.PWMA.ChangeDutyCycle(self.PA)      #setting the engines
@@ -74,7 +74,7 @@ class AlphaBot(object):
         T.sleep(time_ms/1000)
         self.stop()
 
-    def right(self, time_ms):       #this function turn the alphabot right for {time_ms} milliseconds
+    def right(self, time_ms):       #this function turns right the alphabot for {time_ms} milliseconds
         print("The Alphabot moves right...")
         
         self.PWMA.ChangeDutyCycle(self.PA)      #setting the engines
@@ -193,7 +193,7 @@ class Clients_class(thr.Thread):        #class client
                     connessione_db.close()
 
 def control():
-    out = sb.check_output(["vcgencmd", "get_throttled"])    #control with library subprocess
+    out = sb.check_output(["vcgencmd", "get_throttled"])    #battery control with library subprocess
     return(out)
 
 
