@@ -148,7 +148,7 @@ class Clients_class(thr.Thread):        #class client
             alphabot.stop()
             print("Disconnection...")
         
-        #recognise the letter (w-a-s-d) for the move
+        #recognise the letter (w-a-s-d) for the direction
         elif 'w' in way:        #forward
             self.connessione.sendall("OK".encode())
             alphabot.forward(time)
@@ -181,11 +181,11 @@ class Clients_class(thr.Thread):        #class client
                 self.basicMovements(way, time)
             
 
-            else:       #if is not a basic movement, we search it in out database
+            else:       #if is not a basic movement, we search it in our database
                 connessione_db = SQL.connect('./alphabot.db')
-                cursor = connessione_db.cursor()
-                cursor.execute(f"SELECT Movimenti.sequenza FROM Movimenti WHERE '{way}' = Movimenti.nome")
-                temporan = cursor.fetchall()
+                cursor = connessione_db.cursor()        #creating the cursor
+                cursor.execute(f"SELECT Movimenti.sequenza FROM Movimenti WHERE '{way}' = Movimenti.nome")      #searching the sequence of moves in the DB
+                temporan = cursor.fetchall()    #execution the query
                 if len (temporan)>0:
                     movimenti=temporan[0][0]
                     for m in movimenti.split(","):
