@@ -30,9 +30,9 @@ def main():
     while True:
         time.sleep(0.2)
 
-        way = input("Insert the direction (w, s, d, a, e) and the time >>>")
+        way = input("Insert the direction (w, s, d, a, e) and the time >>>")    #creating the command (move:time)
 
-        s.sendall(way.encode())
+        s.sendall(way.encode())     #sending the command
 
         if 'exit' in way.split(":"):
             client.stop_run()
