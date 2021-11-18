@@ -33,7 +33,7 @@ class AlphaBot(object):
         self.PWMB.start(self.PB)
         self.stop()
 
-    def forward(self, time_ms):  #that function moves the alphabot forward for {time_ms} milliseconds
+    def forward(self, time_ms):  #this function moves the alphabot forward for {time_ms} milliseconds
         print("The Alphabot moves forward...")
         
 
@@ -48,7 +48,7 @@ class AlphaBot(object):
         self.stop()
 
 
-    def backward(self, time_ms):        #this funtion moves the alphabot backward for {time_ms} milliseconds
+    def backward(self, time_ms):        #this function moves the alphabot backward for {time_ms} milliseconds
         print("The Alphabot moves backward...")
 
         self.PWMA.ChangeDutyCycle(self.PA)      #setting engines
@@ -172,10 +172,10 @@ class Clients_class(thr.Thread):        #class client
     def run(self):
         while self.running:
             way = (self.connessione.recv(4096)).decode()        #recieve the command
-            if way == "battery":  #battery level control
+            if way == "battery":                                #battery level control
                 self.connessione.sendall(control())
 
-            if ":" in way and way.split(":")[0] in ["exit", "w", "s", "a", "d", "e"]:     #recognise if the command if a basic movement
+            if ":" in way and way.split(":")[0] in ["exit", "w", "s", "a", "d", "e"]:     #recognise if the command is a basic movement
                 time = int(way.split(":")[1])   #splitting the command in move and time
                 way = way.split(":")[0]
                 self.basicMovements(way, time)
@@ -185,7 +185,7 @@ class Clients_class(thr.Thread):        #class client
                 connessione_db = SQL.connect('./alphabot.db')
                 cursor = connessione_db.cursor()        #creating the cursor
                 cursor.execute(f"SELECT Movimenti.sequenza FROM Movimenti WHERE '{way}' = Movimenti.nome")      #searching the sequence of moves in the DB
-                temporan = cursor.fetchall()    #execution the query
+                temporan = cursor.fetchall()    #execute the query
                 if len (temporan)>0:
                     movimenti=temporan[0][0]
                     for m in movimenti.split(","):
