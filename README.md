@@ -1,6 +1,6 @@
 # General description of the project
 
-This is our project of the alphabot.  
+This is our project with the alphabot.  
 It use sockets (TCP) to connect the server (raspberry on the Alphabot) with the client (on our computers).  
   
 Our Alphabt can also make complex moves. Furthermore we can see if our battery are charged or not with the command "battery".  
